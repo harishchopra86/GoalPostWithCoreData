@@ -265,6 +265,9 @@ Cg
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="5RJ-Ln-8NV" id="UG9-98-Oel"/>
+                                </connections>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aiX-b0-a9h">
                                 <rect key="frame" x="10" y="295.5" width="355" height="50"/>
@@ -346,6 +349,109 @@ Cg
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pbU-bH-1Vx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="880.79999999999995" y="156.97151424287858"/>
+        </scene>
+        <!--Finish GoalVC-->
+        <scene sceneID="tjl-6v-oEG">
+            <objects>
+                <viewController storyboardIdentifier="FinishGoalVC" id="vqy-2B-fUA" customClass="FinishGoalVC" customModule="GoalPost" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nWT-Df-I3h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYn-bO-OWJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWj-QY-IGy">
+                                        <rect key="frame" x="130.5" y="36" width="114.5" height="24"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="GOAL ">
+                                                <attributes>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <font key="NSFont" size="20" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="POST">
+                                                <attributes>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <font key="NSFont" size="20" name="HelveticaNeue-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7A-c3-IBb">
+                                        <rect key="frame" x="15" y="35.5" width="14" height="25"/>
+                                        <state key="normal" image="back"/>
+                                        <connections>
+                                            <action selector="backBtnTapped:" destination="vqy-2B-fUA" eventType="touchUpInside" id="xGJ-7q-ejy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.42745098040000001" green="0.73725490199999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="GWj-QY-IGy" secondAttribute="bottom" constant="10" id="HcC-OZ-sm7"/>
+                                    <constraint firstItem="v7A-c3-IBb" firstAttribute="leading" secondItem="dYn-bO-OWJ" secondAttribute="leading" constant="15" id="ILy-TD-IPc"/>
+                                    <constraint firstAttribute="height" constant="70" id="bb1-HJ-8Ry"/>
+                                    <constraint firstItem="v7A-c3-IBb" firstAttribute="centerY" secondItem="GWj-QY-IGy" secondAttribute="centerY" id="hzu-M1-mXk"/>
+                                    <constraint firstItem="GWj-QY-IGy" firstAttribute="centerX" secondItem="dYn-bO-OWJ" secondAttribute="centerX" id="s8B-Dm-Ni4"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many points until complete?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQb-c3-htS">
+                                <rect key="frame" x="10" y="80" width="355" height="23.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="53T-oG-WFB">
+                                <rect key="frame" x="171.5" y="123.5" width="32" height="59"/>
+                                <color key="textColor" red="0.42745098040000001" green="0.73725490199999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vqy-2B-fUA" id="fTn-9i-Nk7"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGf-oa-YC5">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.66274509800000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HRg-T8-GvD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="CREATE GOAL">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="createGoalBtnTapped:" destination="vqy-2B-fUA" eventType="touchUpInside" id="02r-Sg-B3T"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dYn-bO-OWJ" firstAttribute="leading" secondItem="Bej-E9-laY" secondAttribute="leading" id="2CD-ph-ZnF"/>
+                            <constraint firstItem="dYn-bO-OWJ" firstAttribute="top" secondItem="nWT-Df-I3h" secondAttribute="top" id="Dv5-Ou-B3h"/>
+                            <constraint firstItem="Bej-E9-laY" firstAttribute="bottom" secondItem="aGf-oa-YC5" secondAttribute="bottom" id="Fnz-JR-Cim"/>
+                            <constraint firstAttribute="trailing" secondItem="DQb-c3-htS" secondAttribute="trailing" constant="10" id="I14-rj-YIj"/>
+                            <constraint firstItem="53T-oG-WFB" firstAttribute="centerX" secondItem="nWT-Df-I3h" secondAttribute="centerX" id="JyI-4q-jRd"/>
+                            <constraint firstItem="aGf-oa-YC5" firstAttribute="leading" secondItem="nWT-Df-I3h" secondAttribute="leading" id="Vqr-AJ-6f5"/>
+                            <constraint firstItem="Bej-E9-laY" firstAttribute="trailing" secondItem="aGf-oa-YC5" secondAttribute="trailing" id="Vws-RI-d5L"/>
+                            <constraint firstItem="53T-oG-WFB" firstAttribute="top" secondItem="DQb-c3-htS" secondAttribute="bottom" constant="20" id="XGT-Y9-wEJ"/>
+                            <constraint firstItem="dYn-bO-OWJ" firstAttribute="trailing" secondItem="Bej-E9-laY" secondAttribute="trailing" id="aKM-Gz-ZY9"/>
+                            <constraint firstItem="DQb-c3-htS" firstAttribute="top" secondItem="dYn-bO-OWJ" secondAttribute="bottom" constant="10" id="jTx-KR-9oU"/>
+                            <constraint firstItem="DQb-c3-htS" firstAttribute="leading" secondItem="Bej-E9-laY" secondAttribute="leading" constant="10" id="kPA-t2-0T9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bej-E9-laY"/>
+                    </view>
+                    <connections>
+                        <outlet property="createGoalBtn" destination="aGf-oa-YC5" id="9Nb-OA-ZXo"/>
+                        <outlet property="pointsTxtField" destination="53T-oG-WFB" id="0pR-n0-afY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="27U-sm-w08" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1610" y="157"/>
         </scene>
     </scenes>
     <resources>
