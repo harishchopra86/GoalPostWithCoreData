@@ -413,34 +413,46 @@ Cg
                                     <outlet property="delegate" destination="vqy-2B-fUA" id="fTn-9i-Nk7"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGf-oa-YC5">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.91764705879999997" green="0.66274509800000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6uQ-K2-dlT">
+                                <rect key="frame" x="0.0" y="192.5" width="375" height="474.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGf-oa-YC5">
+                                        <rect key="frame" x="0.0" y="424.5" width="375" height="50"/>
+                                        <color key="backgroundColor" red="0.91764705879999997" green="0.66274509800000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="HRg-T8-GvD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="CREATE GOAL">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="createGoalBtnTapped:" destination="vqy-2B-fUA" eventType="touchUpInside" id="02r-Sg-B3T"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="HRg-T8-GvD"/>
+                                    <constraint firstAttribute="trailing" secondItem="aGf-oa-YC5" secondAttribute="trailing" id="8oM-Jz-8qh"/>
+                                    <constraint firstItem="aGf-oa-YC5" firstAttribute="leading" secondItem="6uQ-K2-dlT" secondAttribute="leading" id="Cig-Dn-0TZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="aGf-oa-YC5" secondAttribute="bottom" id="eas-ad-OB2"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                <state key="normal" title="CREATE GOAL">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="createGoalBtnTapped:" destination="vqy-2B-fUA" eventType="touchUpInside" id="02r-Sg-B3T"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dYn-bO-OWJ" firstAttribute="leading" secondItem="Bej-E9-laY" secondAttribute="leading" id="2CD-ph-ZnF"/>
                             <constraint firstItem="dYn-bO-OWJ" firstAttribute="top" secondItem="nWT-Df-I3h" secondAttribute="top" id="Dv5-Ou-B3h"/>
-                            <constraint firstItem="Bej-E9-laY" firstAttribute="bottom" secondItem="aGf-oa-YC5" secondAttribute="bottom" id="Fnz-JR-Cim"/>
+                            <constraint firstItem="6uQ-K2-dlT" firstAttribute="top" secondItem="53T-oG-WFB" secondAttribute="bottom" constant="10" id="FfD-2a-tLR"/>
                             <constraint firstAttribute="trailing" secondItem="DQb-c3-htS" secondAttribute="trailing" constant="10" id="I14-rj-YIj"/>
                             <constraint firstItem="53T-oG-WFB" firstAttribute="centerX" secondItem="nWT-Df-I3h" secondAttribute="centerX" id="JyI-4q-jRd"/>
-                            <constraint firstItem="aGf-oa-YC5" firstAttribute="leading" secondItem="nWT-Df-I3h" secondAttribute="leading" id="Vqr-AJ-6f5"/>
-                            <constraint firstItem="Bej-E9-laY" firstAttribute="trailing" secondItem="aGf-oa-YC5" secondAttribute="trailing" id="Vws-RI-d5L"/>
+                            <constraint firstItem="Bej-E9-laY" firstAttribute="bottom" secondItem="6uQ-K2-dlT" secondAttribute="bottom" id="VLk-OA-NRz"/>
                             <constraint firstItem="53T-oG-WFB" firstAttribute="top" secondItem="DQb-c3-htS" secondAttribute="bottom" constant="20" id="XGT-Y9-wEJ"/>
                             <constraint firstItem="dYn-bO-OWJ" firstAttribute="trailing" secondItem="Bej-E9-laY" secondAttribute="trailing" id="aKM-Gz-ZY9"/>
                             <constraint firstItem="DQb-c3-htS" firstAttribute="top" secondItem="dYn-bO-OWJ" secondAttribute="bottom" constant="10" id="jTx-KR-9oU"/>
                             <constraint firstItem="DQb-c3-htS" firstAttribute="leading" secondItem="Bej-E9-laY" secondAttribute="leading" constant="10" id="kPA-t2-0T9"/>
+                            <constraint firstItem="6uQ-K2-dlT" firstAttribute="leading" secondItem="Bej-E9-laY" secondAttribute="leading" id="o1i-kC-fBf"/>
+                            <constraint firstItem="Bej-E9-laY" firstAttribute="trailing" secondItem="6uQ-K2-dlT" secondAttribute="trailing" id="x1v-bG-ibZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bej-E9-laY"/>
                     </view>
