@@ -27,7 +27,7 @@ class AddGoalVC: UIViewController {
     @IBAction func btnNextTapped(_ sender: Any) {
     }
     @IBAction func backBtnTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismissDetail()
     }
     
     override func didReceiveMemoryWarning() {

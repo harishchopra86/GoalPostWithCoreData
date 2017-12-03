@@ -21,7 +21,7 @@
         <!--GoalsVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="GoalsVC" customModule="GoalPost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GoalsVC" id="BYZ-38-t0r" customClass="GoalsVC" customModule="GoalPost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,13 +211,13 @@ Cg
         <!--Add GoalVC-->
         <scene sceneID="RLZ-rb-7ef">
             <objects>
-                <viewController id="5RJ-Ln-8NV" customClass="AddGoalVC" customModule="GoalPost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddGoalVC" id="5RJ-Ln-8NV" customClass="AddGoalVC" customModule="GoalPost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f55-Nb-YBy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uu6-02-ISi">
-                                <rect key="frame" x="0.0" y="20" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2f6-j1-COb">
                                         <rect key="frame" x="130.5" y="36" width="114.5" height="24"/>
@@ -257,7 +257,7 @@ Cg
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What is your goal?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XDb-Dt-SCZ">
-                                <rect key="frame" x="10" y="100" width="355" height="175"/>
+                                <rect key="frame" x="10" y="80" width="355" height="175"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="175" id="T23-dg-W0L"/>
@@ -267,7 +267,7 @@ Cg
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aiX-b0-a9h">
-                                <rect key="frame" x="10" y="315.5" width="355" height="50"/>
+                                <rect key="frame" x="10" y="295.5" width="355" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCh-lw-kdt">
                                         <rect key="frame" x="0.0" y="0.0" width="167.5" height="50"/>
@@ -297,7 +297,7 @@ Cg
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select one:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqo-qi-7br">
-                                <rect key="frame" x="10" y="285" width="86" height="20.5"/>
+                                <rect key="frame" x="10" y="265" width="86" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -326,11 +326,11 @@ Cg
                             <constraint firstItem="XDb-Dt-SCZ" firstAttribute="leading" secondItem="j8E-gz-muR" secondAttribute="leading" constant="10" id="XEa-2S-WTZ"/>
                             <constraint firstItem="Uu6-02-ISi" firstAttribute="leading" secondItem="j8E-gz-muR" secondAttribute="leading" id="YD9-m1-Ufu"/>
                             <constraint firstItem="zzp-Ws-a7B" firstAttribute="trailing" secondItem="j8E-gz-muR" secondAttribute="trailing" id="bCU-ne-MVs"/>
+                            <constraint firstItem="Uu6-02-ISi" firstAttribute="top" secondItem="f55-Nb-YBy" secondAttribute="top" id="blm-70-h4b"/>
                             <constraint firstItem="j8E-gz-muR" firstAttribute="trailing" secondItem="XDb-Dt-SCZ" secondAttribute="trailing" constant="10" id="fBV-cx-TZn"/>
                             <constraint firstItem="aiX-b0-a9h" firstAttribute="leading" secondItem="j8E-gz-muR" secondAttribute="leading" constant="10" id="fTr-zo-wqJ"/>
                             <constraint firstItem="zzp-Ws-a7B" firstAttribute="bottom" secondItem="j8E-gz-muR" secondAttribute="bottom" id="hVe-Oh-Br9"/>
                             <constraint firstItem="Uu6-02-ISi" firstAttribute="trailing" secondItem="j8E-gz-muR" secondAttribute="trailing" id="mKl-ob-ZHW"/>
-                            <constraint firstItem="Uu6-02-ISi" firstAttribute="top" secondItem="j8E-gz-muR" secondAttribute="top" id="qzO-ik-pGy"/>
                             <constraint firstItem="aiX-b0-a9h" firstAttribute="top" secondItem="Sqo-qi-7br" secondAttribute="bottom" constant="10" id="tOn-D7-NSz"/>
                             <constraint firstItem="Sqo-qi-7br" firstAttribute="top" secondItem="XDb-Dt-SCZ" secondAttribute="bottom" constant="10" id="uWM-9d-cLC"/>
                         </constraints>

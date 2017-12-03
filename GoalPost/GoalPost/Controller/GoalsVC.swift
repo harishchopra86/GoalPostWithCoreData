@@ -21,13 +21,18 @@ class GoalsVC: UIViewController {
         
         let goal = Goal()
 //        goal.goalCompletionValue = Int32(bitPattern: 5)
-        goal.goalDescription = "this is a goal";
+//        goal.goalDescription = "this is a goal";
     
         print(goal)
     }
 
     @IBAction func addGoalTapped(_ sender: Any) {
         
+        let addGoalVC = storyboard?.instantiateViewController(withIdentifier: "AddGoalVC")
+        if let vcToPresent = addGoalVC {
+            self.presentDetail(vcToPresent)
+        }
+        else { return }
         
     }
     
