@@ -22,7 +22,7 @@ class GoalCell: UITableViewCell {
     }
 
     
-    func setUpCell() {
+    func configureCell() {
         
         
     }
