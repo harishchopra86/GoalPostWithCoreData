@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
+let APP_DELEGATE = UIApplication.shared.delegate as! AppDelegate
 class GoalsVC: UIViewController {
    
     
@@ -53,3 +55,10 @@ extension GoalsVC: UITableViewDataSource, UITableViewDelegate {
 
 }
 
+extension GoalsVC {
+    
+    func fetch(completion: (_ complete:Bool)->()) {
+        let managedObjectContext = APP_DELEGATE.persistentContainer.viewContext
+let fetchRequest = NSFetchRequest(entityName: "Goal")
+    }
+}

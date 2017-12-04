@@ -29,14 +29,38 @@ class FinishGoalVC: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func createGoalBtnTapped(_ sender: Any) {
-        
-        
+        if self.pointsTxtField.text != "" {
+            self.save { (success) in
+                if success {
+                    dismissSecondaryDetail(viewController: self)
+                }
+                else {
+                    
+                }
+            }
+        }
     }
+    
     @IBAction func backBtnTapped(_ sender: Any) {
-        dismissDetail()
+        dismissSecondaryDetail(viewController: self)
         
     }
     
+    func save(completion: (_ finished:Bool)->()) {
+        let managedObjectContext = APP_DELEGATE.persistentContainer.viewContext
+        let goal = Goal(context: managedObjectContext)
+        goal.goalDescription = self.goalDescription
+        goal.goalType = self.goalType.rawValue
+        goal.goalCompletionValue = Int32(self.pointsTxtField.text!)!
+        goal.goalProgress = Int32(0)
+        do {
+           try managedObjectContext.save()
+            completion(true)
+        } catch  {
+            debugPrint(error.localizedDescription)
+            completion(false)
+        }
+    }
     
     
 
