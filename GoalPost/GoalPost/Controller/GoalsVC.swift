@@ -27,7 +27,13 @@ class GoalsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetch { (success) in
-            goalTblVw.isHidden = false
+            if goals.count > 0 {
+                goalTblVw.isHidden = false
+            }
+            else {
+                goalTblVw.isHidden = true
+
+            }
             goalTblVw.reloadData()
         }
     }
@@ -56,10 +62,56 @@ extension GoalsVC: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
+            self.removeGoal(goal: self.goals[indexPath.row], completion: { (success) in
+                if success {
+                    self.fetch(completion: { (success) in
+                        tableView.deleteRows(at: [indexPath], with: .automatic)
+                    })
+                }
+                else {
+                    
+                }
+            })
+        }
+        deleteAction.backgroundColor = UIColor.red
+        
+        let addAction = UITableViewRowAction(style: .normal, title: "ADD ONE") { (rowAction, indexPath) in
+            self.set(progressAtIndexpath: indexPath)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        addAction.backgroundColor = #colorLiteral(red: 0.9176470588, green: 0.662745098, blue: 0.2666666667, alpha: 1)
+        
+        return [deleteAction, addAction]
+    }
 
 }
 
 extension GoalsVC {
+    
+    func set(progressAtIndexpath indexPath: IndexPath) {
+        let managedObjectContext = APP_DELEGATE.persistentContainer.viewContext
+        let selectedGoal = goals[indexPath.row]
+        
+        if selectedGoal.goalProgress < selectedGoal.goalCompletionValue {
+            selectedGoal.goalProgress = selectedGoal.goalProgress + 1
+        }
+        do {
+            try managedObjectContext.save()
+        } catch  {
+            print(error.localizedDescription)
+        }
+    }
     
     func fetch(completion: (_ complete:Bool)->()) {
         let managedObjectContext = APP_DELEGATE.persistentContainer.viewContext
@@ -67,6 +119,19 @@ extension GoalsVC {
         
         do {
             goals = try managedObjectContext.fetch(fetchRequest)
+            completion(true)
+        } catch  {
+            print(error.localizedDescription)
+            completion(false)
+        }
+    }
+    
+    func removeGoal(goal:Goal, completion: (_ complete:Bool)->()) {
+        let managedObjectContext = APP_DELEGATE.persistentContainer.viewContext
+        managedObjectContext.delete(goal)
+       
+        do {
+            try managedObjectContext.save()
             completion(true)
         } catch  {
             print(error.localizedDescription)

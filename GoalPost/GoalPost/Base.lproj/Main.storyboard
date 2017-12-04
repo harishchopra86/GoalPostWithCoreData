@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,6 +14,7 @@
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
             <string>HelveticaNeue-Bold</string>
+            <string>HelveticaNeue-BoldItalic</string>
             <string>HelveticaNeue-Medium</string>
         </array>
     </customFonts>
@@ -160,16 +161,37 @@ Cg
                                                     <color key="textColor" red="0.42745098040000001" green="0.73725490199999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbv-0F-FCI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal Complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUB-1O-74E">
+                                                            <rect key="frame" x="64" y="14" width="248.5" height="42"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="35"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.91764705882352937" green="0.66274509803921566" blue="0.26666666666666666" alpha="0.75" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="FUB-1O-74E" firstAttribute="centerY" secondItem="qbv-0F-FCI" secondAttribute="centerY" id="bye-mQ-wjl"/>
+                                                        <constraint firstItem="FUB-1O-74E" firstAttribute="centerX" secondItem="qbv-0F-FCI" secondAttribute="centerX" id="f2e-YR-bo7"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="qZv-cW-0yX" firstAttribute="centerY" secondItem="Gqc-MD-Lq7" secondAttribute="centerY" id="6fv-mQ-fO6"/>
+                                                <constraint firstItem="qbv-0F-FCI" firstAttribute="leading" secondItem="Gqc-MD-Lq7" secondAttribute="leading" id="I7c-Y0-rRm"/>
                                                 <constraint firstItem="ArZ-wD-uXf" firstAttribute="leading" secondItem="qZv-cW-0yX" secondAttribute="trailing" constant="10" id="MQP-u4-PXY"/>
                                                 <constraint firstItem="ArZ-wD-uXf" firstAttribute="trailing" secondItem="Gqc-MD-Lq7" secondAttribute="trailingMargin" constant="5" id="ZKW-wU-JZw"/>
                                                 <constraint firstItem="ArZ-wD-uXf" firstAttribute="centerY" secondItem="Gqc-MD-Lq7" secondAttribute="centerY" id="ZiB-6V-Ux6"/>
+                                                <constraint firstAttribute="bottom" secondItem="qbv-0F-FCI" secondAttribute="bottom" id="av5-BS-xad"/>
                                                 <constraint firstItem="qZv-cW-0yX" firstAttribute="leading" secondItem="Gqc-MD-Lq7" secondAttribute="leading" constant="10" id="bg3-uH-isE"/>
+                                                <constraint firstItem="qbv-0F-FCI" firstAttribute="top" secondItem="Gqc-MD-Lq7" secondAttribute="top" id="mEq-Qd-tBI"/>
+                                                <constraint firstAttribute="trailing" secondItem="qbv-0F-FCI" secondAttribute="trailing" id="qfQ-ZD-fDJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="completionView" destination="qbv-0F-FCI" id="1iV-6I-xVP"/>
                                             <outlet property="durationLbl" destination="ArZ-wD-uXf" id="SFj-aA-Se7"/>
                                             <outlet property="goalLbl" destination="TGa-w7-vZo" id="omi-UG-xpP"/>
                                             <outlet property="goalNameLbl" destination="epo-wz-iL4" id="H5h-Ev-Gu9"/>
