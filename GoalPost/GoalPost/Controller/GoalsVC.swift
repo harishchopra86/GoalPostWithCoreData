@@ -18,14 +18,18 @@ class GoalsVC: UIViewController {
     @IBOutlet weak var addGoalBtn: UIButton!
     @IBOutlet weak var goalTblVw: UITableView!
     
+    var goals:[Goal] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let goal = Goal()
-//        goal.goalCompletionValue = Int32(bitPattern: 5)
-//        goal.goalDescription = "this is a goal";
+    }
     
-        print(goal)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetch { (success) in
+            goalTblVw.isHidden = false
+            goalTblVw.reloadData()
+        }
     }
 
     @IBAction func addGoalTapped(_ sender: Any) {
@@ -43,12 +47,12 @@ class GoalsVC: UIViewController {
 extension GoalsVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return goals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GoalCell", for: indexPath) as? GoalCell else { return GoalCell() }
-        cell.configureCell()
+        cell.configureCell(objGoal: goals[indexPath.row])
         
         return cell
     }
@@ -59,6 +63,14 @@ extension GoalsVC {
     
     func fetch(completion: (_ complete:Bool)->()) {
         let managedObjectContext = APP_DELEGATE.persistentContainer.viewContext
-let fetchRequest = NSFetchRequest(entityName: "Goal")
+        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        
+        do {
+            goals = try managedObjectContext.fetch(fetchRequest)
+            completion(true)
+        } catch  {
+            print(error.localizedDescription)
+            completion(false)
+        }
     }
 }

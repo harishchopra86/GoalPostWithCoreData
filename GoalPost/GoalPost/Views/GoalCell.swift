@@ -22,9 +22,11 @@ class GoalCell: UITableViewCell {
     }
 
     
-    func configureCell() {
-        
-        
+    func configureCell(objGoal:Goal) {
+        goalNameLbl.text = objGoal.goalDescription
+        let type:GoalType = GoalType(rawValue: objGoal.goalType!)!
+        typeNameLbl.text = type.rawValue
+        durationLbl.text = String(objGoal.goalCompletionValue)        
     }
     
     
