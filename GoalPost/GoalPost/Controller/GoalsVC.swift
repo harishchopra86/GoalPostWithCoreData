@@ -12,8 +12,6 @@ import CoreData
 let APP_DELEGATE = UIApplication.shared.delegate as! AppDelegate
 class GoalsVC: UIViewController {
    
-    
-
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var addGoalBtn: UIButton!
     @IBOutlet weak var goalTblVw: UITableView!
@@ -47,7 +45,6 @@ class GoalsVC: UIViewController {
             self.presentDetail(vcToPresent)
         }
         else { return }
-        
     }
     
     
@@ -60,7 +57,6 @@ class GoalsVC: UIViewController {
             }
             else {
                 goalTblVw.isHidden = true
-                
             }
             goalTblVw.reloadData()
         }
@@ -83,7 +79,6 @@ class GoalsVC: UIViewController {
                 self.view.layoutIfNeeded()
         })
     }
-    
 }
 
 extension GoalsVC: UITableViewDataSource, UITableViewDelegate {
