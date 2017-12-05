@@ -23,7 +23,7 @@ class GoalsVC: UIViewController {
     var goals:[Goal] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUndoManager()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,16 +109,9 @@ extension GoalsVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
-            self.removeGoal(goal: self.goals[indexPath.row], completion: { (success) in
-                if success {
-                    self.fetch(completion: { (success) in
-                        tableView.deleteRows(at: [indexPath], with: .automatic)
-                        self.showBottomView()
-                    })
-                }
-                else {
-
-                }
+            
+            self.removeGoal(atIndexPath: indexPath, completion: { (success) in
+                self.showBottomView()
             })
         }
         deleteAction.backgroundColor = UIColor.red
@@ -138,7 +131,12 @@ extension GoalsVC {
     
     func undoLastOperation() {
         let managedObjectContext = APP_DELEGATE.persistentContainer.viewContext
-        managedObjectContext.undo()
+        managedObjectContext.undoManager?.undo()
+        do {
+            try managedObjectContext.save()
+        } catch  {
+            print(error.localizedDescription)
+        }
     }
     
     func set(progressAtIndexpath indexPath: IndexPath) {
@@ -168,16 +166,26 @@ extension GoalsVC {
         }
     }
     
-    func removeGoal(goal:Goal, completion: (_ complete:Bool)->()) {
+    func removeGoal(atIndexPath indexPath:IndexPath, completion: (_ complete:Bool)->()) {
+        let goal = goals[indexPath.row]
         let managedObjectContext = APP_DELEGATE.persistentContainer.viewContext
+     
+        managedObjectContext.undoManager?.beginUndoGrouping()
         managedObjectContext.delete(goal)
-       
         do {
             try managedObjectContext.save()
+            goals.remove(at: indexPath.row)
+            goalTblVw.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
         } catch  {
             print(error.localizedDescription)
             completion(false)
         }
+        managedObjectContext.undoManager?.endUndoGrouping()
+    }
+    
+    func setUndoManager() {
+        let managedObjectContext = APP_DELEGATE.persistentContainer.viewContext
+        managedObjectContext.undoManager = UndoManager()
     }
 }
