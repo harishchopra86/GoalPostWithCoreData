@@ -205,23 +205,57 @@ Cg
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="1iB-K7-Fwt"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ma1-M0-f3H">
+                                <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal deleted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCh-iW-OD6">
+                                        <rect key="frame" x="10" y="-10.5" width="100.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bfv-Cp-2av">
+                                        <rect key="frame" x="310" y="-17" width="55" height="34"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="UNDO">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="undoBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RMA-6H-MgI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.7017891839" green="0.20817368010000001" blue="0.10808200179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="gCh-iW-OD6" firstAttribute="centerY" secondItem="Ma1-M0-f3H" secondAttribute="centerY" id="7QF-kj-0To"/>
+                                    <constraint firstItem="Bfv-Cp-2av" firstAttribute="centerY" secondItem="Ma1-M0-f3H" secondAttribute="centerY" id="Cpt-og-Ri0"/>
+                                    <constraint firstAttribute="height" id="Or0-Tz-jHf"/>
+                                    <constraint firstItem="gCh-iW-OD6" firstAttribute="leading" secondItem="Ma1-M0-f3H" secondAttribute="leading" constant="10" id="Png-uz-BKN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bfv-Cp-2av" secondAttribute="trailing" constant="10" id="r4s-6f-3yo"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pTY-Re-6HY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1Gv-fd-2x0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fQl-nn-daf" secondAttribute="bottom" id="88h-ds-FIY"/>
+                            <constraint firstItem="Ma1-M0-f3H" firstAttribute="top" secondItem="fQl-nn-daf" secondAttribute="bottom" id="3Tr-cR-nL4"/>
                             <constraint firstItem="pTY-Re-6HY" firstAttribute="top" secondItem="A3s-sU-O34" secondAttribute="bottom" constant="75" id="9QY-T7-JgH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ma1-M0-f3H" secondAttribute="trailing" id="B0u-DL-4Fx"/>
                             <constraint firstItem="A3s-sU-O34" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ufe-p6-uWg"/>
                             <constraint firstItem="fQl-nn-daf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V0l-HQ-mQ7"/>
                             <constraint firstItem="fQl-nn-daf" firstAttribute="top" secondItem="A3s-sU-O34" secondAttribute="bottom" id="WrL-9G-wyT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fQl-nn-daf" secondAttribute="trailing" id="fPa-j2-zaC"/>
                             <constraint firstItem="A3s-sU-O34" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="jkA-A8-yw4"/>
+                            <constraint firstItem="Ma1-M0-f3H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pOx-Ub-O4B"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ma1-M0-f3H" secondAttribute="bottom" id="wca-PE-OAK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="A3s-sU-O34" secondAttribute="trailing" id="xqg-Ph-6C6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="addGoalBtn" destination="kRq-KZ-olv" id="Wlf-Ij-GNR"/>
+                        <outlet property="bottomVw" destination="Ma1-M0-f3H" id="OXy-4H-wsx"/>
+                        <outlet property="bottomVwheightConstraint" destination="Or0-Tz-jHf" id="IRO-ns-5jS"/>
                         <outlet property="goalTblVw" destination="fQl-nn-daf" id="Z4I-go-mKy"/>
                         <outlet property="titleLbl" destination="s9v-4C-lvz" id="Rbu-9s-9kH"/>
                     </connections>

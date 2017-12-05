@@ -17,6 +17,8 @@ class GoalsVC: UIViewController {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var addGoalBtn: UIButton!
     @IBOutlet weak var goalTblVw: UITableView!
+    @IBOutlet weak var bottomVw: UIView!
+    @IBOutlet weak var bottomVwheightConstraint: NSLayoutConstraint!
     
     var goals:[Goal] = []
     override func viewDidLoad() {
@@ -48,6 +50,40 @@ class GoalsVC: UIViewController {
         
     }
     
+    
+    @IBAction func undoBtnTapped(_ sender: Any) {
+        undoLastOperation()
+        self.hideBottomView()
+        fetch { (success) in
+            if goals.count > 0 {
+                goalTblVw.isHidden = false
+            }
+            else {
+                goalTblVw.isHidden = true
+                
+            }
+            goalTblVw.reloadData()
+        }
+    }
+    
+    func showBottomView() {
+        UIView.animate(withDuration: 0.7, animations: {
+            self.bottomVwheightConstraint.constant = 50
+            self.view.layoutIfNeeded()
+        }, completion: { (success) in
+            DispatchQueue.main.asyncAfter(deadline: .now()+3, execute: {
+                self.hideBottomView()
+            })
+        })
+    }
+    
+    func hideBottomView() {
+            UIView.animate(withDuration: 0.7, animations: {
+                self.bottomVwheightConstraint.constant = 0
+                self.view.layoutIfNeeded()
+        })
+    }
+    
 }
 
 extension GoalsVC: UITableViewDataSource, UITableViewDelegate {
@@ -77,10 +113,11 @@ extension GoalsVC: UITableViewDataSource, UITableViewDelegate {
                 if success {
                     self.fetch(completion: { (success) in
                         tableView.deleteRows(at: [indexPath], with: .automatic)
+                        self.showBottomView()
                     })
                 }
                 else {
-                    
+
                 }
             })
         }
@@ -98,6 +135,11 @@ extension GoalsVC: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension GoalsVC {
+    
+    func undoLastOperation() {
+        let managedObjectContext = APP_DELEGATE.persistentContainer.viewContext
+        managedObjectContext.undo()
+    }
     
     func set(progressAtIndexpath indexPath: IndexPath) {
         let managedObjectContext = APP_DELEGATE.persistentContainer.viewContext
